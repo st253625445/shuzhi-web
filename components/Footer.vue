@@ -18,13 +18,13 @@
               <p class="mapTitle">
                 须知
               </p>
-              <b-link href="/about">
+              <b-link href="/about?index=1">
                 关于我们
               </b-link>
-              <b-link href="#">
+              <b-link href="/about?index=2">
                 媒体须知
               </b-link>
-              <b-link href="#">
+              <b-link href="/about?index=3">
                 版权声明
               </b-link>
             </div>

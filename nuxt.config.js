@@ -44,6 +44,15 @@ module.exports = {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
+    proxy: true
+  },
+  proxy: {
+    '/api': {
+      target: 'http://www.iwuzhen.org:9080',
+      pathRewrite: { '^/api': '' },
+      changeOrigin: true,
+      secure: false
+    }
   },
   /*
   ** Build configuration

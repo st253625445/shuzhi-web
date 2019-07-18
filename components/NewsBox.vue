@@ -5,44 +5,14 @@
         <span>动态新闻</span>
       </div>
       <b-row class="newsList">
-        <b-col class="newsItem">
-          <b-img src="../assets/img/newImage1.png" fluid-grow alt="Fluid-grow image" />
+        <b-col v-for="(item,index) in newsData" :key="index" class="newsItem" @click="linkNewsDetail(item.id)">
+          <b-img :src="item.img" fluid-grow alt="Fluid-grow image" />
           <div class="newsInfo">
             <p class="label">
-              乌镇智库系列AI报告收官：从细分领域洞 察全球AI态势
+              {{ item.title }}
             </p>
-            <p class="count">
-              从全球视角来看，计算机视觉、自然语言处理、智能驾 驶在新增企业数、融资规模、专利数上体量，其中从全球视角来看，计算机视觉、自然语言处理、智能驾 驶在新增企业数、融资规模、专利数上体量，其中从全球视角来看，计算机视觉、自然语言处理、智能驾 驶在新增企业数、融资规模、专利数上体量，其中察全球AI态势数上体量，其中察全球AI态势
-            </p>
-            <p class="moreButton">
-              查看全部
-              <b-img src="../assets/img/arrows.png" fluid alt="image" />
-            </p>
-          </div>
-        </b-col>
-        <b-col class="newsItem">
-          <b-img src="../assets/img/newImage2.png" fluid-grow alt="Fluid-grow image" />
-          <div class="newsInfo">
-            <p class="label">
-              乌镇智库系列AI报告收官：从细分领域洞 察全球AI态势
-            </p>
-            <p class="count">
-              从全球视角来看，计算机视觉、自然语言处理、智能驾 驶在新增企业数、融资规模、专利数上体量，其中察全球AI态势数上体量，其中察全球AI态势
-            </p>
-            <p class="moreButton">
-              查看全部
-              <b-img src="../assets/img/arrows.png" fluid alt="image" />
-            </p>
-          </div>
-        </b-col>
-        <b-col class="newsItem">
-          <b-img src="../assets/img/newImage3.png" fluid-grow alt="Fluid-grow image" />
-          <div class="newsInfo">
-            <p class="label">
-              乌镇智库系列AI报告收官：从细分领域洞 察全球AI态势
-            </p>
-            <p class="count">
-              从全球视角来看，计算机视觉、自然语言处理、智能驾 驶在新增企业数、融资规模、专利数上体量，其中察全球AI态势数上体量，其中察全球AI态势
+            <p class="content">
+              {{ item.content }}
             </p>
             <p class="moreButton">
               查看全部
@@ -59,20 +29,56 @@
 </template>
 
 <script>
+import { $get } from '~/plugins/axios'
 export default {
   name: 'NewsBox',
   components: {},
   props: {},
   data() {
     return {
-
+      params: {
+        offset: '0',
+        limit: '3'
+      },
+      newsData: []
     }
   },
   computed: {},
   watch: {},
-  created() {},
-  mounted() {},
-  methods: {}
+  created() {
+    this.getNewsData()
+  },
+  mounted() {
+  },
+  methods: {
+    getNewsData() {
+      this.newsData = []
+      $get('/api/news', this.params).then((res) => {
+        try {
+          res.forEach((item) => {
+            this.newsData.push({
+              img: item.imgs[0].url,
+              title: item.title,
+              id: item.reports_id,
+              content: item.content
+            })
+          })
+        } catch (error) {
+          this.newsData = []
+        }
+      }).catch((rej) => {})
+    },
+    linkNewsDetail(id) {
+      if (id) {
+        this.$router.push({
+          path: '/newsDetail',
+          query: {
+            id: id
+          }
+        })
+      }
+    }
+  }
 }
 </script>
 
@@ -109,7 +115,7 @@ export default {
         text-overflow:ellipsis;
         white-space: nowrap;
       }
-      .count{
+      .content{
         display: none;
         font-size: 12px;
         line-height: 2;
@@ -134,7 +140,7 @@ export default {
           padding: 10px 30px;
           top: 0;
         }
-        .count{
+        .content{
           display: -webkit-box;
         }
         .moreButton{

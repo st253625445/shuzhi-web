@@ -4,6 +4,13 @@
       <div class="main_title">
         <span>合作伙伴</span>
       </div>
+      <div class="partnerListBox">
+        <b-row ref="partnerList">
+          <b-col v-for="(item, index) in partnerImgs" :key="index">
+            <b-img :src="item.img" fluid alt="image" />
+          </b-col>
+        </b-row>
+      </div>
     </b-container>
   </div>
 </template>
@@ -15,12 +22,19 @@ export default {
   props: {},
   data() {
     return {
-
+      partnerImgs: []
     }
   },
   computed: {},
   watch: {},
-  created() {},
+  created() {
+    this.partnerImgs = []
+    for (let i = 32; i < 48; i++) {
+      this.partnerImgs.push({
+        img: require(`../assets/img/partner/image${i}.png`)
+      })
+    }
+  },
   mounted() {},
   methods: {}
 }

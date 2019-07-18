@@ -5,38 +5,18 @@
         <span>研究报告</span>
       </div>
       <b-row class="reportList">
-        <b-col>
-          <div class="reportItem">
-            <b-img src="../assets/img/report1.png" fluid-grow alt="Fluid-grow image" />
-            <p class="label">
-              乌镇智库系列AI报告收官：从细分领域洞 察全球AI态势
-            </p>
-            <p class="count">
-              从全球视角来看，计算机视觉、自然语言处理、智能驾 驶在新增企业数、融资规模、专利数上体量，其中察全球AI态势数上体量，其中察全球AI态势
-            </p>
-          </div>
-        </b-col>
-        <b-col>
-          <div class="reportItem">
-            <b-img src="../assets/img/report2.png" fluid-grow alt="Fluid-grow image" />
-            <p class="label">
-              乌镇智库系列AI报告收官：从细分领域洞 察全球AI态势
-            </p>
-            <p class="count">
-              从全球视角来看，计算机视觉、自然语言处理、智能驾 驶在新增企业数、融资规模、专利数上体量，其中察全球AI态势数上体量，其中察全球AI态势
-            </p>
-          </div>
-        </b-col>
-        <b-col>
-          <div class="reportItem">
-            <b-img src="../assets/img/report3.png" fluid-grow alt="Fluid-grow image" />
-            <p class="label">
-              乌镇智库系列AI报告收官：从细分领域洞 察全球AI态势
-            </p>
-            <p class="count">
-              从全球视角来看，计算机视觉、自然语言处理、智能驾 驶在新增企业数、融资规模、专利数上体量，其中察全球AI态势数上体量，其中察全球AI态势
-            </p>
-          </div>
+        <b-col v-for="(item,index) in reportDatas" :key="index">
+          <a class="reportItem" :href="item.fileUrl" target="_balnk">
+            <b-img :src="item.img" fluid-grow alt="Fluid-grow image" class="reportImg" />
+            <div class="reportInfo">
+              <p class="label">
+                {{ item.title }}
+              </p>
+              <p class="content">
+                {{ item.content }}
+              </p>
+            </div>
+          </a>
         </b-col>
       </b-row>
       <div class="main_moreIcon">
@@ -47,20 +27,47 @@
 </template>
 
 <script>
+import { $get } from '~/plugins/axios'
 export default {
   name: 'ReportBox',
   components: {},
   props: {},
   data() {
     return {
-
+      reportDatas: []
     }
   },
   computed: {},
   watch: {},
-  created() {},
+  created() {
+    this.getReprotList()
+  },
   mounted() {},
-  methods: {}
+  methods: {
+    getReprotList() {
+      const _parame = {
+        tags: '',
+        offset: 0,
+        limit: 3
+      }
+      this.reportDatas = []
+      $get('/api/reports', _parame).then((res) => {
+        try {
+          res.forEach((item) => {
+            this.reportDatas.push({
+              fileUrl: item.files[0].url,
+              img: item.imgs[0].url,
+              title: item.title,
+              id: item.news_id,
+              content: item.abstract
+            })
+          })
+        } catch (error) {
+          this.reportDatas = []
+        }
+      }).catch((rej) => {})
+    }
+  }
 }
 </script>
 
@@ -73,33 +80,39 @@ export default {
   }
   .reportList{
     .reportItem{
+      display: block;
       background: #fff;
+      text-decoration: none;
+      color: #04142b;
+      .reportInfo{
+        width: 100%;
+        padding: 0 20px 40px;
+      }
       p{
         margin-bottom: 0;
         text-align: justify;
-        padding: 0 20px;
         display: -webkit-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 2;
         overflow: hidden;
       }
       .label{
-        min-height: 64px;
+        height: 64px;
         margin-bottom: 10px;
         margin-top: 20px;
         font-size: 16px;
         font-weight: bold;
         line-height: 32px;
       }
-      .count{
-        min-height: 80px;
+      .content{
+        height: 40px;
         font-size: 12px;
         line-height: 20px;
         color: #737373;
-        padding-bottom: 40px;
       }
       &:hover{
         .label{
+          text-decoration: none;
           color:#526df9;
         }
       }
