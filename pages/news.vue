@@ -8,7 +8,7 @@
       </div>
     </div>
     <div class="newsPageCount container">
-      <div v-for="(item , index) in newsData" :key="index" class="newsItemBox" @click="linkDetail(item.id)">
+      <div v-for="(item , index) in newsData" :key="index" class="newsItemBox" @click="linkDetail(item.url)">
         <div class="newsItemImg">
           <b-img :src="item.img" fluid alt="image" />
         </div>
@@ -38,6 +38,10 @@
           align="center"
         />
       </div>
+      <div class="newsMoreBotton" @click="getMoreNews">
+        <span v-if="hasMore">查看更多新闻</span>
+        <span v-else style="color: #ccc;">暂无更多</span>
+      </div>
     </div>
   </div>
 </template>
@@ -59,7 +63,9 @@ export default {
       currentPage: 0,
       perPage: 4,
       rows: 0,
-      newsData: []
+      newsData: [],
+      hasMore: true,
+      isMobile: false
     }
   },
   computed: {},
@@ -71,6 +77,7 @@ export default {
     }
   },
   created() {
+    this.isMobile = this.$isMobile === 1
     this.getNewsCount()
   },
   mounted() {},
@@ -86,7 +93,9 @@ export default {
         offset: (this.currentPage - 1) * this.perPage,
         limit: this.perPage
       }
-      this.newsData = []
+      if (!this.isMobile) {
+        this.newsData = []
+      }
       $get('/api/news', _params).then((res) => {
         try {
           res.forEach((item) => {
@@ -95,21 +104,29 @@ export default {
               time: item.update_time,
               content: item.content,
               title: item.title,
-              img: item.imgs[0].url
+              img: item.imgs[0].url,
+              url: item.url
             })
           })
         } catch (error) {
-          this.newsData = []
+          if (!this.isMobile) {
+            this.newsData = []
+          }
+          this.hasMore = false
         }
       }).catch((rej) => {})
     },
-    linkDetail(id) {
-      this.$router.push({
-        path: 'newsDetail',
-        query: {
-          id: id
-        }
-      })
+    linkDetail(url) {
+      if (url) {
+        window.open(url, '_blank')
+      }
+    },
+    getMoreNews() {
+      if (this.rows > (this.currentPage - 1) * this.perPage) {
+        this.currentPage = this.currentPage + 1
+      } else {
+        this.hasMore = false
+      }
     }
   }
 }
@@ -118,7 +135,7 @@ export default {
 <style lang="less">
 .page-news{
   width: 100%;
-  color: #f7f7f7;
+  background: #f7f7f7;
   .newsBanner{
     background-image: url(../assets/img/newsbanner.png);
   }
@@ -171,6 +188,53 @@ export default {
         .newsTitle,.newsLink{
           color:#526df9;
         }
+      }
+    }
+    .newsMoreBotton{
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 768px ) {
+  .page-news{
+    .newsPageCount{
+      .newsItemBox{
+        padding: 0;
+        margin-top: 6.6667vw;
+        border-bottom: none;
+      }
+      .newsTitle{
+        font-size: 3.7333vw;
+        line-height: 1.7;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+      }
+      .newsTime{
+        display: none;
+      }
+      .newsContent{
+        line-height: 1.7;
+        font-size: 3.7333vw;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        overflow: hidden;
+      }
+      .newsLink{
+        display: none;
+      }
+      .mian_Pagination{
+        display: none;
+      }
+      .newsMoreBotton{
+        display: block;
+        text-align: center;
+        color: #526df9;
+        font-size: 3.4667vw;
+        padding: 10.6667vw 0 6.6667vw;
       }
     }
   }

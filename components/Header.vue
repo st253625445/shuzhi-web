@@ -51,7 +51,8 @@ export default {}
 </script>
 
 <style lang="less">
-@import url("./../assets/style/common.less");
+@import url("../assets/style/reset.less");
+@import url("../assets/style/common.less");
 .component-header {
   .navbar-brand {
     width: 112px;
@@ -103,6 +104,25 @@ export default {}
       float: none;
       width: 100%;
       text-align: center;
+    }
+    .navbar {
+      padding: 2.1333vw;
+    }
+    .navbar-brand{
+      width: 25.5vw;
+      height: 7vw;
+      img{
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .navbar-toggler{
+      padding: 0.5333vw 2.1333vw;
+      margin-right: 4vw;
+    }
+    .navbar-toggler-icon{
+      width: 5.3333vw;
+      height: 5.3333vw;
     }
     .bg-info {
       background-color: rgba(23, 35, 49, 0.8) !important;

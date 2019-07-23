@@ -5,9 +5,18 @@
         <span>研究报告</span>
       </div>
       <b-row class="reportList">
-        <b-col v-for="(item,index) in reportDatas" :key="index">
+        <b-col
+          v-for="(item,index) in reportDatas"
+          :key="index"
+          xl="4"
+          md="4"
+          sm="6"
+          cols="12"
+        >
           <a class="reportItem" :href="item.fileUrl" target="_balnk">
-            <b-img :src="item.img" fluid-grow alt="Fluid-grow image" class="reportImg" />
+            <div class="reportImg">
+              <b-img :src="item.img" fluid-grow alt="Fluid-grow image" />
+            </div>
             <div class="reportInfo">
               <p class="label">
                 {{ item.title }}
@@ -19,7 +28,7 @@
           </a>
         </b-col>
       </b-row>
-      <div class="main_moreIcon">
+      <div class="main_moreIcon" @click="linkMore()">
         更多研究报告
       </div>
     </b-container>
@@ -66,6 +75,11 @@ export default {
           this.reportDatas = []
         }
       }).catch((rej) => {})
+    },
+    linkMore() {
+      this.$router.push({
+        path: '/report'
+      })
     }
   }
 }
@@ -84,6 +98,9 @@ export default {
       background: #fff;
       text-decoration: none;
       color: #04142b;
+      .reportImg{
+        height: 250px;
+      }
       .reportInfo{
         width: 100%;
         padding: 0 20px 40px;
@@ -114,6 +131,48 @@ export default {
         .label{
           text-decoration: none;
           color:#526df9;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 576px ) {
+  .component-report{
+    padding: 0;
+    >.container{
+      position: relative;
+    }
+    .reportList{
+      .reportItem{
+        display: flex;
+        align-items: center;
+        padding: 3.3333vw 4vw;
+        margin-bottom: 2.6667vw;
+        .reportImg{
+          width: 29.3333vw !important;
+          height: auto;
+          margin-right: 2.6667vw;
+        }
+        .reportInfo{
+          flex: 1;
+          padding: 0;
+          .label{
+            height: auto;
+            margin: 0;
+            font-weight: normal;
+            font-size: 3.7333vw;
+            color: rgb(4, 20, 43);
+            line-height: 1.571;
+            text-align: left;
+          }
+          .content{
+            height: auto;
+            font-size: 3.7333vw;
+            line-height: 1.571;
+            color: #737373;
+            -webkit-line-clamp: 1;
+          }
         }
       }
     }

@@ -1,8 +1,16 @@
 <template>
   <div class="component-service">
     <b-container class="service-panel">
-      <b-row>
-        <b-col class="serviceItem" @mouseenter="showActive(1)" @mouseleave="showActive(0)">
+      <b-row class="justify-content-md-center">
+        <b-col
+          xl="3"
+          md="4"
+          sm="6"
+          cols="12"
+          class="serviceItem"
+          @mouseenter="showActive(1)"
+          @mouseleave="showActive(0)"
+        >
           <b-img src="../assets/img/service1.png" fluid alt="Responsive image" />
           <b-img v-if="serviceIndex === 1" class="hoverimg" src="../assets/img/service1_h.png" fluid alt="Responsive image" />
           <p class="label">
@@ -12,7 +20,15 @@
             专注增强学习、GBDT、深度学习、注意力模型、对抗网络等人工智能算法的研发，是公司完成将数据转化为知识使命的根基。
           </p>
         </b-col>
-        <b-col class="serviceItem" @mouseenter="showActive(2)" @mouseleave="showActive(0)">
+        <b-col
+          xl="3"
+          md="4"
+          sm="6"
+          cols="12"
+          class="serviceItem"
+          @mouseenter="showActive(2)"
+          @mouseleave="showActive(0)"
+        >
           <b-img src="../assets/img/service2.png" fluid alt="Responsive image" />
           <b-img v-if="serviceIndex === 2" class="hoverimg" src="../assets/img/service2_h.png" fluid alt="Responsive image" />
           <p class="label">
@@ -22,7 +38,15 @@
             结合深度学习和语义规则，研发了分词、词性、实体、语义依赖、观点挖掘、事件抽取等模块，为上层业务提供语义服务。
           </p>
         </b-col>
-        <b-col class="serviceItem" @mouseenter="showActive(3)" @mouseleave="showActive(0)">
+        <b-col
+          xl="3"
+          md="4"
+          sm="6"
+          cols="12"
+          class="serviceItem"
+          @mouseenter="showActive(3)"
+          @mouseleave="showActive(0)"
+        >
           <b-img src="../assets/img/service3.png" fluid alt="Responsive image" />
           <b-img v-if="serviceIndex === 3" class="hoverimg" src="../assets/img/service3_h.png" fluid alt="Responsive image" />
           <p class="label">
@@ -32,7 +56,15 @@
             数据是公司业务基础，团队自主研发大吞吐量分布式采集和结构化流水线，实时全面覆盖任何网页和APP数据。
           </p>
         </b-col>
-        <b-col class="serviceItem" @mouseenter="showActive(4)" @mouseleave="showActive(0)">
+        <b-col
+          xl="3"
+          md="4"
+          sm="6"
+          cols="12"
+          class="serviceItem"
+          @mouseenter="showActive(4)"
+          @mouseleave="showActive(0)"
+        >
           <b-img src="../assets/img/service4.png" fluid alt="Responsive image" />
           <b-img v-if="serviceIndex === 4" class="hoverimg" src="../assets/img/service4_h.png" fluid alt="Responsive image" />
           <p class="label">
@@ -42,7 +74,15 @@
             团队研发的语义网络技术，自动完成实体抽取及实体链接，构建了千万级别知识图谱，助力人类决策的联想与推断。
           </p>
         </b-col>
-        <b-col class="serviceItem" @mouseenter="showActive(5)" @mouseleave="showActive(0)">
+        <b-col
+          xl="3"
+          md="4"
+          sm="6"
+          cols="12"
+          class="serviceItem"
+          @mouseenter="showActive(5)"
+          @mouseleave="showActive(0)"
+        >
           <b-img src="../assets/img/service5.png" fluid alt="Responsive image" />
           <b-img v-if="serviceIndex === 5" class="hoverimg" src="../assets/img/service5_h.png" fluid alt="Responsive image" />
           <p class="label">
@@ -81,11 +121,12 @@ export default {
     padding: 0;
   }
   .service-panel{
-    padding: 60px 0;
+    padding-top: 60px;
   }
   .serviceItem{
     position: relative;
     padding-top: 100px;
+    margin-bottom: 60px;
     img{
       position: absolute;
       width: 90px;
@@ -110,6 +151,57 @@ export default {
       font-size: 12px;
       line-height: 24px;
       color: #828393;
+    }
+  }
+}
+@media (min-width:1200px){
+  .col-xl-3{
+    flex: 0 0 20%;
+    max-width: 20%;
+  }
+}
+
+@media (max-width: 576px ) {
+  .component-service{
+    background: #fff;
+    .service-panel{
+      padding: 4vw;
+    }
+    .row{
+      margin: 0;
+    }
+    .serviceItem{
+      position: relative;
+      padding: 4.6667vw;
+      margin: 0;
+      &:hover{
+        border-radius: 10px;
+        box-shadow: 0px 0px 9px 0px rgba(82, 109, 249, 0.2);
+      }
+      img{
+        width: 10.6667vw;
+        height: 10.6667vw;
+        left: 12vw;
+        top: 4.9333vw;
+      }
+      .label{
+        position: absolute;
+        left: 0;
+        top: 17.3333vw;
+        width: 24vw;
+        text-align: center;
+        font-size: 3.4667vw;
+        color: rgb(4, 20, 43);
+        line-height: 1.2;
+      }
+      .count{
+        width: 100%;
+        padding: 0;
+        padding-left: 20vw;
+        font-size: 3.4667vw;
+        color: rgb(130, 131, 147);
+        line-height: 1.692;
+      }
     }
   }
 }

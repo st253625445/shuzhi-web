@@ -90,7 +90,6 @@ export default {
 </script>
 
 <style lang="less">
-@import url("./../assets/style/common.less");
 .component-footer {
   width: 100%;
   height: 246px;
@@ -154,6 +153,90 @@ export default {
   .mapTitle{
     font-size: 14px;
     line-height: 30px;
+  }
+}
+@media (max-width: 768px ) {
+  .component-footer{
+    padding: 0;
+    height: auto;
+    background: #1c2431;
+    .main-panel{
+      position: relative;
+      .row {
+        margin: 0;
+      }
+      .col-xl-3{
+        padding: 0;
+      }
+      .footerMap{
+        display: flex;
+        flex-direction: column-reverse;
+        padding: 2.6667vw;
+        height: auto;
+        padding-left: 22vw;
+      }
+      .footerMapCol{
+        &::after{
+          width: 0;
+          height: 0;
+        }
+        p{
+          font-size: 1.6vw;
+          color: rgba(255, 255, 255, 0.502);
+          line-height: 1.4;
+        }
+        .mapTitle{
+          color: rgba(255, 255, 255, 1);
+          line-height: 1.6;
+        }
+        &:nth-child(1){
+          position: absolute;
+          display: flex;
+          flex-direction: column;
+          width: 22vw;
+          left: 0;
+          top: 4.6667vw;
+          .linkBox{
+            font-size: 1.6vw;
+            position: relative;
+            line-height: 1.4;
+            a{
+              color: rgba(255, 255, 255, 0.502);
+              line-height: 1.4;
+            }
+          }
+        }
+        &:nth-child(2){
+          width: 49.3333vw;
+          margin-bottom: 8vw;
+        }
+        &:nth-child(3){
+          margin-bottom: 4vw;
+        }
+        &:nth-child(4){
+          position: absolute;
+          right: 0;
+          bottom: 12vw;
+        }
+      }
+    }
+    .footer-logo{
+      width: 16vw;
+      margin-bottom: 4vw;
+    }
+    .logotext{
+      font-size: 2.6667vw;
+      line-height: 1.2;
+      letter-spacing: 1vw;
+    }
+    .logotextEn{
+      font-size: 1.6vw;
+      color: rgba(255, 255, 255, 0.502);
+      line-height: 1.2;
+    }
+    .footerICPinfo{
+      display: none;
+    }
   }
 }
 </style>

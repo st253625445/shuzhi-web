@@ -13,6 +13,8 @@ export default {
   components: {
     componentHeader,
     componentFooter
+  },
+  mounted() {
   }
 }
 </script>

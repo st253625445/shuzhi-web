@@ -74,7 +74,39 @@ export default {
     background-image: url("../assets/img/moreIconBg.png");
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    cursor: default;
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 576px ) {
+  .pages-home{
+    .main_title{
+      width: 100%;
+      height: 13.3333vw;
+      padding: 2vw 0;
+      font-size: 4vw;
+      padding-left: 24px;
+      margin-bottom: 0;
+      color: #04142b;
+      font-weight: bold;
+      line-height: 9.3333vw;
+    }
+    .main_moreIcon{
+      position: absolute;
+      width: 30.6667vw;
+      height: 13.3333vw;
+      padding: 0;
+      margin: 0;
+      top: 0;
+      right: 0;
+      left: auto;
+      background: none;
+      transform: translate(0,0);
+      line-height: 13.3333vw;
+      font-size: 3.4667vw;
+      color: #526df9;
+      font-weight: normal;
+    }
   }
 }
 </style>

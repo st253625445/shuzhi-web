@@ -5,69 +5,24 @@
         <span>智库团队</span>
       </div>
       <b-row class="teamList">
-        <b-col class="teamItem">
-          <b-img src="../assets/img/itemImage1.png" fluid-grow alt="Fluid-grow image" />
-          <div class="teamItemInfo">
-            <p class="name">
-              张晓东
-            </p>
-            <p class="title">
-              乌镇智库理事长
-            </p>
+        <b-col
+          v-for="(item, index) in teamData"
+          :key="index"
+          xl="2"
+          md="2"
+          sm="4"
+          cols="4"
+          class="teamItem"
+        >
+          <div class="teamImg">
+            <b-img :src="item.img" fluid-grow alt="Fluid-grow image" />
           </div>
-        </b-col>
-        <b-col class="teamItem">
-          <b-img src="../assets/img/itemImage2.png" fluid-grow alt="Fluid-grow image" />
           <div class="teamItemInfo">
             <p class="name">
-              陈利人
+              {{ item.name }}
             </p>
             <p class="title">
-              乌镇智库CTO
-            </p>
-          </div>
-        </b-col>
-        <b-col class="teamItem">
-          <b-img src="../assets/img/itemImage3.png" fluid-grow alt="Fluid-grow image" />
-          <div class="teamItemInfo">
-            <p class="name">
-              车品觉
-            </p>
-            <p class="title">
-              乌镇智库理事
-            </p>
-          </div>
-        </b-col>
-        <b-col class="teamItem">
-          <b-img src="../assets/img/itemImage4.png" fluid-grow alt="Fluid-grow image" />
-          <div class="teamItemInfo">
-            <p class="name">
-              程迈越
-            </p>
-            <p class="title">
-              乌镇智库理事
-            </p>
-          </div>
-        </b-col>
-        <b-col class="teamItem">
-          <b-img src="../assets/img/itemImage5.png" fluid-grow alt="Fluid-grow image" />
-          <div class="teamItemInfo">
-            <p class="name">
-              陈立峰
-            </p>
-            <p class="title">
-              乌镇智库理事
-            </p>
-          </div>
-        </b-col>
-        <b-col class="teamItem">
-          <b-img src="../assets/img/itemImage6.png" fluid-grow alt="Fluid-grow image" />
-          <div class="teamItemInfo">
-            <p class="name">
-              姜玮
-            </p>
-            <p class="title">
-              乌镇智库理事
+              {{ item.title }}
             </p>
           </div>
         </b-col>
@@ -83,7 +38,31 @@ export default {
   props: {},
   data() {
     return {
-
+      teamData: [{
+        name: '张晓东',
+        title: '乌镇智库理事长',
+        img: require('../assets/img/itemImage1.png')
+      }, {
+        name: '陈利人',
+        title: '乌镇智库CTO',
+        img: require('../assets/img/itemImage2.png')
+      }, {
+        name: '车品觉',
+        title: '乌镇智库理事',
+        img: require('../assets/img/itemImage3.png')
+      }, {
+        name: '程迈越',
+        title: '乌镇智库理事',
+        img: require('../assets/img/itemImage4.png')
+      }, {
+        name: '陈立峰',
+        title: '乌镇智库理事',
+        img: require('../assets/img/itemImage5.png')
+      }, {
+        name: '姜玮',
+        title: '乌镇智库理事',
+        img: require('../assets/img/itemImage6.png')
+      }]
     }
   },
   computed: {},
@@ -124,6 +103,43 @@ export default {
     .title{
       font-size: 12px;
       line-height: 18px;
+    }
+  }
+}
+
+@media (max-width: 576px ) {
+  .component-team{
+    padding: 0;
+    .main_title{
+      height: 16vw;
+      padding: 3.3333vw 0;
+      padding-left: 24px;
+    }
+    .row{
+      margin: 0;
+    }
+    .teamList{
+      padding: 0 2vw;
+    }
+    .col-4{
+      padding: 0 2vw;
+    }
+    .teamItem {
+      margin-bottom: 4vw;
+      .teamItemInfo{
+        width: calc(100% - 4vw);
+        height: 13.3333vw;
+        left: 2vw;
+        padding: 2vw;
+      }
+      .name{
+        font-size: 3.4667vw;
+        line-height: 5.3333vw;
+      }
+      .title{
+        font-size: 3.2vw;
+        line-height: 4.8vw;
+      }
     }
   }
 }

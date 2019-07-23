@@ -103,4 +103,41 @@ export default {
     }
   }
 }
+
+@media (max-width: 768px ) {
+  .page-consultant{
+    .consultantCount{
+      .consultantItem{
+        .consultantPanel{
+          padding: 2.6667vw 5.3333vw;
+          flex-direction: column-reverse;
+        }
+        .consultantValue, .consultantImg{
+          padding: 0
+        }
+        .consultantImg{
+          width: 100%;
+          margin: 4vw 0 12vw;
+          img{
+            width: 100%;
+          }
+        }
+        p.title{
+          font-size: 4vw;
+          line-height: 10.6667vw;
+          text-align: center;
+        }
+        p.count{
+          font-size: 3.7333vw;
+          line-height: 6.6667vw;
+        }
+        &:nth-child(2n){
+          .consultantPanel{
+            flex-direction: column-reverse;
+          }
+        }
+      }
+    }
+  }
+}
 </style>

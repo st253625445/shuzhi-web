@@ -9,7 +9,7 @@
     </div>
     <div class="aboutPageCount container">
       <b-card no-body>
-        <b-tabs card vertical>
+        <b-tabs card :vertical="isVertical" :fill="isFill">
           <b-tab title="关于我们" :active="activeIndex === '1'">
             <div>
               <p>
@@ -53,7 +53,9 @@ export default {
   props: {},
   data() {
     return {
-      activeIndex: '1'
+      activeIndex: '1',
+      isVertical: true,
+      isFill: false
     }
   },
   computed: {},
@@ -69,6 +71,8 @@ export default {
     }
   },
   created() {
+    this.isVertical = this.$isMobile !== 1
+    this.isFill = this.$isMobile === 1
   },
   mounted() {},
   methods: {}
@@ -122,6 +126,45 @@ export default {
         color: #828393;
         line-height: 30px;
         text-align: justify;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px ) {
+  .page-about{
+    background-color: #fff;
+    .aboutPageCount{
+      padding: 0;
+      .card-header-tabs{
+        margin: 0;
+      }
+      .card-header{
+        padding: 0;
+        background-color: #fff;
+        border-bottom: none;
+      }
+      .nav-tabs{
+        .nav-item{
+          width: auto;
+          font-size: 4vw;
+          line-height: 10.6667vw;
+          border: none;
+        }
+        .nav-link{
+          border-bottom: 1px dashed rgba(204, 204, 204, 0.5);
+          &.active{
+            color: #526df9;
+            border-bottom: 1px solid #526df9;
+          }
+        }
+      }
+      .card-body{
+        padding: 5.3333vw;
+        p{
+          font-size: 3.7333vw;
+          line-height: 6vw;
+        }
       }
     }
   }

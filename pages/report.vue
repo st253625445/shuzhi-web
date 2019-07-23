@@ -15,9 +15,11 @@
       </div>
       <div class="reportListBox">
         <b-row>
-          <b-col v-for="(item, index) in reportDatas" :key="index" cols="4" class="reportItem">
+          <b-col v-for="(item, index) in reportDatas" :key="index" xl="4" cols="12" class="reportItem">
             <a :href="item.fileUrl" target="_blank">
-              <b-img :src="item.img" fluid-grow alt="Fluid-grow image" />
+              <div class="reportItemImg">
+                <b-img :src="item.img" fluid-grow alt="Fluid-grow image" />
+              </div>
               <div class="info">
                 <p class="title">
                   {{ item.title }}
@@ -40,6 +42,10 @@
           next-text="下一页"
           align="center"
         />
+      </div>
+      <div class="reportMoreBotton" @click="getMoreReport">
+        <span v-if="hasMore">查看更多新闻</span>
+        <span v-else style="color: #ccc;">暂无更多</span>
       </div>
     </div>
   </div>
@@ -71,7 +77,10 @@ export default {
         value: 'industry'
       } ],
       selectIndex: 0,
-      reportDatas: []
+      reportDatas: [],
+      hasMore: true,
+      isMobile: false,
+      indexChange: false
     }
   },
   computed: {},
@@ -79,21 +88,32 @@ export default {
     selectIndex: {
       handler(nVal) {
         this.currentPage = 1
+        this.hasMore = true
+        this.reportDatas = []
         this.getReprotCount()
         this.getReprotList()
-      },
-      immediate: true
+        this.indexChange = true
+      }
     },
     currentPage: {
       handler(nVal) {
-        this.getReprotList()
-      },
-      immediate: true
+        if (!this.indexChange || this.currentPage !== 1) {
+          this.getReprotList()
+        }
+        this.indexChange = false
+      }
     }
   },
   created() {
+    this.isMobile = this.$isMobile === 1
+    if (this.isMobile) {
+      this.perPage = 3
+    }
+    this.getReprotCount()
+    this.getReprotList()
   },
-  mounted() {},
+  mounted() {
+  },
   methods: {
     getReprotCount() {
       const _parame = {
@@ -113,7 +133,9 @@ export default {
         offset: (this.currentPage - 1) * this.perPage,
         limit: this.perPage
       }
-      this.reportDatas = []
+      if (!this.isMobile) {
+        this.reportDatas = []
+      }
       $get('/api/reports', _parame).then((res) => {
         // eslint-disable-next-line
         console.log(res)
@@ -128,9 +150,19 @@ export default {
             })
           })
         } catch (error) {
-          this.reportDatas = []
+          if (!this.isMobile) {
+            this.reportDatas = []
+          }
+          this.hasMore = false
         }
       }).catch((rej) => {})
+    },
+    getMoreReport() {
+      if (this.rows > (this.currentPage - 1) * this.perPage) {
+        this.currentPage = this.currentPage + 1
+      } else {
+        this.hasMore = false
+      }
     }
   }
 }
@@ -202,6 +234,74 @@ export default {
           color: #526df9;
         }
       }
+    }
+  }
+  .reportMoreBotton{
+    display: none;
+  }
+}
+
+@media (max-width: 768px ) {
+  .page-report{
+    background: #fff;
+    .reportSelsectBox{
+      margin: 0;
+      padding: 0;
+      display: flex;
+      >span{
+        display: block;
+        flex: 1;
+        font-size: 4vw;
+        line-height: 10.6667vw;
+        color: #04142b;
+        text-align: center;
+        border-bottom: 0.2667vw solid #f6f6f6;
+      }
+    }
+    .reportListBox{
+      .reportItem{
+        margin-top: 6vw;
+        >a{
+          display: flex;
+          align-items: center;
+        }
+        .reportItemImg{
+          width: 33.7333vw;
+          margin-right: 2.6667vw;
+        }
+        .info{
+          flex: 1;
+          padding: 0;
+        }
+        .title{
+          min-height: auto;
+          font-size: 3.7333vw;
+          line-height: 1.7;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 2;
+          overflow: hidden;
+        }
+        .content{
+          min-height: auto;
+          font-size: 3.7333vw;
+          line-height: 1.7;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 1;
+          overflow: hidden;
+        }
+      }
+    }
+    .mian_Pagination{
+      display: none;
+    }
+    .reportMoreBotton{
+      display: block;
+      text-align: center;
+      color: #526df9;
+      font-size: 3.4667vw;
+      padding: 10.6667vw 0 6.6667vw;
     }
   }
 }
