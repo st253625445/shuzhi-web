@@ -11,4 +11,6 @@ COPY --from=builder /tmp/package.json .
 COPY --from=builder /tmp/nuxt.config.js .
 COPY --from=builder /tmp/server ./server
 RUN npm --registry=https://registry.npm.taobao.org i -production
+ENV HOST=0.0.0.0
+ENV port=3000
 CMD [ "npm", "start" ]
