@@ -65,7 +65,7 @@ export default {
         value: ''
       }, {
         label: '最新',
-        value: 'latestRelease'
+        value: ''
       }, {
         label: '科技',
         value: 'technology'
