@@ -118,7 +118,6 @@ export default {}
     }
     .navbar-toggler{
       padding: 0.5333vw 2.1333vw;
-      margin-right: 4vw;
     }
     .navbar-toggler-icon{
       width: 5.3333vw;

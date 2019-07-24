@@ -58,7 +58,9 @@
             <p class="mapTitle">
               关注我们
             </p>
-            <b-img right src="../assets/img/wechatQR.png" alt="Right image" />
+            <div class="wechatQRImg">
+              <b-img right src="../assets/img/wechatQR.png" alt="Right image" />
+            </div>
           </b-col>
         </b-row>
         <b-row align-h="center" class="footerICPinfo text-center">
@@ -135,6 +137,7 @@ export default {
     float: none;
     background-image: url(./../assets/img/logo.png);
     background-size: 100%;
+    background-repeat: no-repeat;
   }
   .logotext{
     letter-spacing: 15px;
@@ -154,12 +157,23 @@ export default {
     font-size: 14px;
     line-height: 30px;
   }
+  .wechatQRImg{
+    width: 58px;
+    height: 58px;
+    float: right;
+    img{
+      width: 100%;
+      height: 100%;
+    }
+  }
 }
 @media (max-width: 768px ) {
   .component-footer{
-    padding: 0;
     height: auto;
     background: #1c2431;
+    .container-fluid{
+      padding: 0 4vw;
+    }
     .main-panel{
       position: relative;
       .row {
@@ -181,7 +195,7 @@ export default {
           height: 0;
         }
         p{
-          font-size: 1.6vw;
+          font-size: 2.6667vw;
           color: rgba(255, 255, 255, 0.502);
           line-height: 1.4;
         }
@@ -197,9 +211,10 @@ export default {
           left: 0;
           top: 4.6667vw;
           .linkBox{
-            font-size: 1.6vw;
+            font-size: 2.6667vw;
             position: relative;
             line-height: 1.4;
+            margin-top: 2vw;
             a{
               color: rgba(255, 255, 255, 0.502);
               line-height: 1.4;
@@ -222,6 +237,7 @@ export default {
     }
     .footer-logo{
       width: 16vw;
+      height: 5vw;
       margin-bottom: 4vw;
     }
     .logotext{
@@ -236,6 +252,10 @@ export default {
     }
     .footerICPinfo{
       display: none;
+    }
+    .wechatQRImg{
+      width: 12vw;
+      height: 12vw;
     }
   }
 }

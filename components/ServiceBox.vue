@@ -8,6 +8,7 @@
           sm="6"
           cols="12"
           class="serviceItem"
+          :class="{active:serviceIndex === 1}"
           @mouseenter="showActive(1)"
           @mouseleave="showActive(0)"
         >
@@ -26,6 +27,7 @@
           sm="6"
           cols="12"
           class="serviceItem"
+          :class="{active:serviceIndex === 2}"
           @mouseenter="showActive(2)"
           @mouseleave="showActive(0)"
         >
@@ -44,6 +46,7 @@
           sm="6"
           cols="12"
           class="serviceItem"
+          :class="{active:serviceIndex === 3}"
           @mouseenter="showActive(3)"
           @mouseleave="showActive(0)"
         >
@@ -62,6 +65,7 @@
           sm="6"
           cols="12"
           class="serviceItem"
+          :class="{active:serviceIndex === 4}"
           @mouseenter="showActive(4)"
           @mouseleave="showActive(0)"
         >
@@ -80,6 +84,7 @@
           sm="6"
           cols="12"
           class="serviceItem"
+          :class="{active:serviceIndex === 5}"
           @mouseenter="showActive(5)"
           @mouseleave="showActive(0)"
         >
@@ -174,7 +179,7 @@ export default {
       position: relative;
       padding: 4.6667vw;
       margin: 0;
-      &:hover{
+      &:hover, &.active{
         border-radius: 10px;
         box-shadow: 0px 0px 9px 0px rgba(82, 109, 249, 0.2);
       }
