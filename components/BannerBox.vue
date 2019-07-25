@@ -137,7 +137,7 @@ export default {
 @media (min-width: 576px ) and (max-width:768px){
   .component-banner{
     .bannerBox{
-      height: 370px;
+      height: 340px;
       .main_bannerTitle{
         padding-top: 110px;
         .main_bannerTitleZh{
@@ -164,7 +164,7 @@ export default {
 @media (min-width: 768px ) and (max-width:991px){
   .component-banner{
     .bannerBox{
-      height: 450px;
+      height: 420px;
       .main_bannerTitle{
         padding-top: 130px;
         .main_bannerTitleZh{
@@ -191,7 +191,7 @@ export default {
 @media (min-width: 992px){
   .component-banner{
     .bannerBox{
-      height: 600px;
+      height: 540px;
       .main_bannerTitle{
         padding-top: 170px;
       }
@@ -207,7 +207,7 @@ export default {
 @media (min-width: 1200px){
   .component-banner{
     .bannerBox{
-      height: 740px;
+      height: 640px;
       .main_bannerTitle{
         padding-top: 220px;
       }
