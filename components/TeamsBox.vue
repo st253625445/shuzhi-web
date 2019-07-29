@@ -8,10 +8,10 @@
         <b-col
           v-for="(item, index) in teamData"
           :key="index"
-          xl="2"
-          md="2"
-          sm="4"
-          cols="4"
+          xl="3"
+          md="3"
+          sm="6"
+          cols="6"
           class="teamItem"
         >
           <div class="teamImg">
@@ -41,27 +41,35 @@ export default {
       teamData: [{
         name: '张晓东',
         title: '乌镇智库理事长',
-        img: require('../assets/img/itemImage1.png')
+        img: require('../assets/img/itemImage1.jpg')
       }, {
         name: '陈利人',
         title: '乌镇智库CTO',
-        img: require('../assets/img/itemImage2.png')
+        img: require('../assets/img/itemImage2.jpg')
       }, {
         name: '车品觉',
         title: '乌镇智库理事',
-        img: require('../assets/img/itemImage3.png')
+        img: require('../assets/img/itemImage3.jpg')
       }, {
         name: '程迈越',
         title: '乌镇智库理事',
-        img: require('../assets/img/itemImage4.png')
+        img: require('../assets/img/itemImage4.jpg')
       }, {
         name: '陈立峰',
         title: '乌镇智库理事',
-        img: require('../assets/img/itemImage5.png')
+        img: require('../assets/img/itemImage5.jpg')
       }, {
         name: '姜玮',
         title: '乌镇智库理事',
-        img: require('../assets/img/itemImage6.png')
+        img: require('../assets/img/itemImage6.jpg')
+      }, {
+        name: '李津',
+        title: '乌镇智库秘书长',
+        img: require('../assets/img/itemImage7.jpg')
+      }, {
+        name: '方刚',
+        title: '乌镇智库执行秘书长',
+        img: require('../assets/img/itemImage8.jpg')
       }]
     }
   },
@@ -82,6 +90,12 @@ export default {
   }
   .teamList{
     position: relative;
+    .teamItem{
+      margin-bottom: 30px;
+      img{
+        vertical-align:bottom;
+      }
+    }
     .teamItemInfo{
       position: absolute;
       width: calc(100% - 30px);
@@ -127,9 +141,9 @@ export default {
     .teamItem {
       margin-bottom: 4vw;
       .teamItemInfo{
-        width: calc(100% - 4vw);
+        width: calc(100% - 30px);
         height: 13.3333vw;
-        left: 2vw;
+        left: 15px;
         padding: 2vw;
       }
       .name{
