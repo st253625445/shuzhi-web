@@ -9,7 +9,7 @@
     >
       <div class="main-panel clearfix">
         <b-navbar-brand href="/">
-          <img src="../assets/img/logo.png" class="d-inline-block align-top" alt="Kitten">
+          <img src="../assets/img/logo.png" class="d-inline-block align-top logoImg" alt="Kitten">
         </b-navbar-brand>
         <b-navbar-toggle target="nav_collapse">
           <!-- <div>
@@ -62,6 +62,9 @@ export default {}
   }
   .navbar-brand{
     padding: 0;
+  }
+  .logoImg{
+    width: 120px;
   }
   .navbar {
     padding: 1rem;

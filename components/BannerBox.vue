@@ -12,7 +12,7 @@
       <div class="main_bannerRightImg">
         <img src="@/assets/img/bannerRight.png" alt="">
       </div>
-      <i class="main_bannerMouseIcon" />
+      <!-- <i class="main_bannerMouseIcon" /> -->
     </div>
   </div>
 </template>
@@ -213,7 +213,7 @@ export default {
       }
       .main_bannerRightImg{
         width: 592px;
-        top: 130px;
+        top: 100px;
         margin-left: 280px;
       }
     }

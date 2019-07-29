@@ -59,7 +59,7 @@
               关注我们
             </p>
             <div class="wechatQRImg">
-              <b-img right src="../assets/img/wechatQR.png" alt="Right image" />
+              <b-img right src="../assets/img/wechatQR.jpg" alt="Right image" />
             </div>
           </b-col>
         </b-row>
@@ -67,7 +67,7 @@
           <b-col
             cols="10"
           >
-            <span>©2019Baidu使用百度前必读|百科协议|隐私政策|百度百科合作平台|京ICP证030173号</span>
+            <span>浙ICP备16036026号</span>
           </b-col>
         </b-row>
       </div>
@@ -117,7 +117,12 @@ export default {
       background: rgba(255,255,255,0.2);
     }
     &:last-child{
-      text-align: right;
+      display: flex;
+      justify-content: flex-end;
+      .mapTitle{
+        width: 20px;
+        line-height: 22px;
+      }
       &::after {
         width: 0;
         height: 0;
@@ -133,7 +138,7 @@ export default {
     display: inline-block;
     width: 83px;
     height: 23px;
-    margin-bottom: 25px;
+    margin-bottom: 24px;
     float: none;
     background-image: url(./../assets/img/logo.png);
     background-size: 100%;
@@ -141,7 +146,7 @@ export default {
   }
   .logotext{
     letter-spacing: 15px;
-    line-height: 30px;
+    line-height: 24px;
   }
   .linkBox{
     position: absolute;
@@ -158,8 +163,8 @@ export default {
     line-height: 30px;
   }
   .wechatQRImg{
-    width: 58px;
-    height: 58px;
+    width: 90px;
+    height: 90px;
     float: right;
     img{
       width: 100%;
@@ -232,6 +237,10 @@ export default {
           position: absolute;
           right: 0;
           bottom: 12vw;
+          .mapTitle{
+            width: 4vw;
+            line-height: 1.2;
+          }
         }
       }
     }
