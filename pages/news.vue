@@ -20,7 +20,7 @@
             {{ item.time | timeFilter }}
           </div>
           <div class="newsContent">
-            {{ item.content }}
+            {{ item.abstract }}
           </div>
           <div class="newsLink">
             查看更多
@@ -102,7 +102,7 @@ export default {
             this.newsData.push({
               id: item.news_id,
               time: item.update_time,
-              content: item.content,
+              abstract: item.abstract,
               title: item.title,
               img: item.imgs[0].url,
               url: item.url
@@ -193,6 +193,13 @@ export default {
     .newsMoreBotton{
       display: none;
     }
+  }
+  .page-item.active .page-link{
+    background-color: #526df9;
+    border-color: #526df9;
+  }
+  .page-link{
+    color:#526df9;
   }
 }
 

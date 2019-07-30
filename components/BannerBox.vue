@@ -5,9 +5,9 @@
         <span class="main_bannerTitleZh">知识即<span style="color:#526df9;">服务</span></span>
         <i class="main_bannerTitleLine" />
         <span class="main_bannerTitleEn">Knowledge as a Service</span>
-        <div class="main_bannerButton">
+        <!-- <div class="main_bannerButton">
           研究报告
-        </div>
+        </div> -->
       </div>
       <div class="main_bannerRightImg">
         <img src="@/assets/img/bannerRight.png" alt="">

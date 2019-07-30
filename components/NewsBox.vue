@@ -22,7 +22,7 @@
                 {{ item.title }}
               </p>
               <p class="content">
-                {{ item.content }}
+                {{ item.abstract }}
               </p>
               <p class="moreButton" @click="LinkPage(item.url)">
                 查看全部
@@ -71,7 +71,7 @@ export default {
               img: item.imgs[0].url,
               title: item.title,
               id: item.reports_id,
-              content: item.content,
+              abstract: item.abstract,
               url: item.url
             })
           })

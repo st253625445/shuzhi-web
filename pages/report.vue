@@ -168,7 +168,7 @@ export default {
 }
 </script>
 
-<style scoped lang="less">
+<style lang="less">
 .page-report{
   background: #f6f6f7;
   .reportBanner{
@@ -238,6 +238,13 @@ export default {
   }
   .reportMoreBotton{
     display: none;
+  }
+  .page-item.active .page-link{
+    background-color: #526df9;
+    border-color: #526df9;
+  }
+  .page-link{
+    color:#526df9;
   }
 }
 

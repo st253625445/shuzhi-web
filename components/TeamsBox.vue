@@ -8,10 +8,10 @@
         <b-col
           v-for="(item, index) in teamData"
           :key="index"
-          xl="3"
-          md="3"
-          sm="6"
-          cols="6"
+          xl="2"
+          md="2"
+          sm="4"
+          cols="4"
           class="teamItem"
         >
           <div class="teamImg">
@@ -91,7 +91,6 @@ export default {
   .teamList{
     position: relative;
     .teamItem{
-      margin-bottom: 30px;
       img{
         vertical-align:bottom;
       }

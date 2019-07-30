@@ -136,9 +136,9 @@ export default {
   }
   .footer-logo {
     display: inline-block;
-    width: 83px;
-    height: 23px;
-    margin-bottom: 24px;
+    width: 108px;
+    height: 30px;
+    margin-bottom: 17px;
     float: none;
     background-image: url(./../assets/img/logo.png);
     background-size: 100%;
