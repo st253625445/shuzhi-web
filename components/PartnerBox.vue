@@ -85,7 +85,7 @@ export default {
 }
 </script>
 
-<style scoped lang="less">
+<style lang="less">
 .component-partner{
   padding: 40px 0 60px;
   background: #fff;
@@ -135,6 +135,9 @@ export default {
             align-items: center;
           }
         }
+      }
+      .img-fluid{
+        max-height: 100%;
       }
     }
   }

@@ -41,35 +41,27 @@ export default {
       teamData: [{
         name: '张晓东',
         title: '乌镇智库理事长',
-        img: require('../assets/img/itemImage1.jpg')
+        img: require('../assets/img/itemImage1.png')
       }, {
         name: '陈利人',
         title: '乌镇智库CTO',
-        img: require('../assets/img/itemImage2.jpg')
+        img: require('../assets/img/itemImage2.png')
       }, {
         name: '车品觉',
         title: '乌镇智库理事',
-        img: require('../assets/img/itemImage3.jpg')
+        img: require('../assets/img/itemImage3.png')
       }, {
         name: '程迈越',
         title: '乌镇智库理事',
-        img: require('../assets/img/itemImage4.jpg')
+        img: require('../assets/img/itemImage4.png')
       }, {
         name: '陈立峰',
         title: '乌镇智库理事',
-        img: require('../assets/img/itemImage5.jpg')
+        img: require('../assets/img/itemImage5.png')
       }, {
         name: '姜玮',
         title: '乌镇智库理事',
-        img: require('../assets/img/itemImage6.jpg')
-      }, {
-        name: '李津',
-        title: '乌镇智库秘书长',
-        img: require('../assets/img/itemImage7.jpg')
-      }, {
-        name: '方刚',
-        title: '乌镇智库执行秘书长',
-        img: require('../assets/img/itemImage8.jpg')
+        img: require('../assets/img/itemImage6.png')
       }]
     }
   },

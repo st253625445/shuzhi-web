@@ -71,6 +71,7 @@ export default {
               content: item.abstract
             })
           })
+          this.reportDatas.reverse()
         } catch (error) {
           this.reportDatas = []
         }
@@ -85,7 +86,7 @@ export default {
 }
 </script>
 
-<style scoped lang="less">
+<style lang="less">
 .component-report{
   padding: 40px 0 60px;
   background: #f7f7f7;
