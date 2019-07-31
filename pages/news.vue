@@ -101,7 +101,7 @@ export default {
           res.forEach((item) => {
             this.newsData.push({
               id: item.news_id,
-              time: item.update_time,
+              time: item.release_time,
               abstract: item.abstract,
               title: item.title,
               img: item.imgs[0].url,
