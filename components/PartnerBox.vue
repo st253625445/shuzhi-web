@@ -128,7 +128,7 @@ export default {
         white-space: nowrap;
         li{
           display: inline-block;
-          width: 200px;
+          max-width: 200px;
           height: 90px;
           padding: 0 20px;
           vertical-align:middle;
