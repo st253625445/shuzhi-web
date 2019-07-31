@@ -21,7 +21,7 @@
       <div v-else class="partnerMobileListBox">
         <b-row>
           <b-col v-for="(item, index) in partnerImgs" :key="index" cols="4">
-            <div>
+            <div class="mobileImgBox">
               <b-img :src="item.img" fluid alt="image" />
             </div>
           </b-col>
@@ -157,6 +157,16 @@ export default {
       position: relative;
       width: 100%;
       padding: 4vw 4vw 12vw;
+      .mobileImgBox{
+        width: 100%;
+        height: 15vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        img{
+          max-height: 100%;
+        }
+      }
     }
   }
 }
