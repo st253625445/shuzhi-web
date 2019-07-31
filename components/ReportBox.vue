@@ -129,6 +129,7 @@ export default {
         color: #737373;
       }
       &:hover{
+        box-shadow: 0px 3px 57px 0px rgba(25, 100, 229, 0.08);
         .label{
           text-decoration: none;
           color:#526df9;

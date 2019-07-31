@@ -156,6 +156,7 @@ export default {
         }
       }
       &:hover{
+        box-shadow: 0px 3px 57px 0px rgba(25, 100, 229, 0.08);
         .newsInfo{
           height: 100%;
           padding: 10px 30px;

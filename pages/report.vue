@@ -230,6 +230,9 @@ export default {
         overflow: hidden;
       }
       &:hover{
+        a{
+          box-shadow: 0px 3px 57px 0px rgba(25, 100, 229, 0.08);
+        }
         .title{
           color: #526df9;
         }
