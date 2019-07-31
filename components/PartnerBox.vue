@@ -8,12 +8,12 @@
         <ul ref="partnerList" :style="{left: ListLeft+'px'}">
           <li v-for="(item, index) in partnerImgs" :key="index">
             <div>
-              <b-img :src="item.img" fluid alt="image" />
+              <b-img :src="item.img" fluid alt="image" @load="imgLoading" />
             </div>
           </li>
           <li v-for="(item, index) in partnerImgs" :key="'0'+index">
             <div>
-              <b-img :src="item.img" fluid alt="image" />
+              <b-img :src="item.img" fluid alt="image" @load="imgLoading" />
             </div>
           </li>
         </ul>
@@ -41,7 +41,8 @@ export default {
     return {
       partnerImgs: [],
       isMobile: false,
-      ListLeft: 0
+      ListLeft: 0,
+      loadingNum: 0
     }
   },
   computed: {},
@@ -62,13 +63,16 @@ export default {
               img: item.imgs[0].url
             })
           })
-          this.$nextTick(() => {
-            this.imgMove()
-          })
         }
       }).catch((rej) => {
         this.partnerImgs = []
       })
+    },
+    imgLoading() {
+      this.loadingNum++
+      if (this.loadingNum === this.partnerImgs.length * 2) {
+        this.imgMove()
+      }
     },
     imgMove() {
       if (this.isMobile) return false
@@ -104,6 +108,7 @@ export default {
         width: 100px;
         height: 100%;
         background: linear-gradient(to right,rgba(255,255,255,1), rgba(255,255,255,0));
+        z-index: 2;
       }
       &::after{
         position: absolute;

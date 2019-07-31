@@ -8,11 +8,11 @@
       </div>
     </div>
     <div class="reportPageCount container">
-      <div class="reportSelsectBox">
+      <!-- <div class="reportSelsectBox">
         <span v-for="(item, index) in selsectData" :key="index" :class="{active: selectIndex === index}" @click="selectIndex = index">
           {{ item.label }}
         </span>
-      </div>
+      </div> -->
       <div class="reportListBox">
         <b-row>
           <b-col v-for="(item, index) in reportDatas" :key="index" xl="4" cols="12" class="reportItem">

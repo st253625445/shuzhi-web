@@ -100,6 +100,7 @@ export default {
     .card-header{
       padding: 0 20px 20px;
       background-color: #f3f3f3;
+      height: auto!important;
     }
     .nav-tabs{
       .nav-item{
