@@ -71,13 +71,15 @@ export default {
     imgLoading() {
       this.loadingNum++
       if (this.loadingNum === this.partnerImgs.length * 2) {
-        this.imgMove()
+        this.$nextTick(() => {
+          this.imgMove()
+        })
       }
     },
     imgMove() {
       if (this.isMobile) return false
       const _dom = this.$refs.partnerList
-      const _w = _dom.clientWidth
+      const _w = _dom.scrollWidth
       setInterval(() => {
         this.ListLeft -= 5
         if (0 - this.ListLeft > _w / 2) {
